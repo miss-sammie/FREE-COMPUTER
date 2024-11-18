@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Dead Name</title>
+    <!-- The style.css file allows you to change the look of your web pages.
+         If you include the next line in all your web pages, they will all share the same look.
+         This makes it easier to make new pages for your site. -->
+    <link href="/text-state.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        #text-container {
+          width: 100%;
+          height: 100vh;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 20px; /* Add some padding to give text more room */
+          box-sizing: border-box; /* Include padding in the element's total width and height */
+    }
+        
+    
+        #text-container p {
+          display: none;
+          margin: 20px;
+          padding: 20px;
+        }
+      </style>
+  </head>
+  <body>
+<div id = "text-container" class = "lectern"> 
+  <p> </p> 
+</div>
+<script>
+  
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+  // Function to request fullscreen
+  function requestFullscreen() {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+      elem.msRequestFullscreen();
+    }
+  }
+
+  // Add event listener for the first user click
+  window.addEventListener('click', function handleFirstClick() {
+    requestFullscreen();
+    // Remove the event listener after the first click
+    window.removeEventListener('click', handleFirstClick);
+  });
+});
+
+  
+
+
+       
+
+window.addEventListener('message', (event) => {
+  if (event.origin !== window.location.origin) {
+    return;
+  }
+  
+  if (event.data.action === 'updateText') {
+    updateText(event.data.text);
+    console.log(event.data.text)
+  }
+});
+
+function updateText(text) {
+  const container = document.getElementById('text-container');
+  
+  // Clear previous content
+  container.innerHTML = '';
+  
+  // Create new paragraph
+  const p = document.createElement('p');
+  p.textContent = text;
+  p.style.display = 'block';
+  
+  // Add to container
+  container.appendChild(p);
+  
+  // Fit text to container
+  fitTextToContainer(p);
+}
+
+function fitTextToContainer(element) {
+  let fontSize = 250;
+  element.style.fontSize = fontSize + 'px';
+  
+  while (
+    (element.scrollHeight > element.parentElement.clientHeight ||
+     element.scrollWidth > element.parentElement.clientWidth) &&
+    fontSize > 12
+  ) {
+    fontSize--;
+    element.style.fontSize = fontSize + 'px';
+  }
+}
+  </script>
+</body>
+</html>

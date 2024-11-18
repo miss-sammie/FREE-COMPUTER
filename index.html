@@ -1,0 +1,428 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Carrier Bag</title>
+    <!-- The style.css file allows you to change the look of your web pages.
+         If you include the next line in all your web pages, they will all share the same look.
+         This makes it easier to make new pages for your site. -->
+    <link href="/simulation_1.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://unpkg.com/hydra-synth"></script>
+
+  </head>
+  <body>
+    <!-- <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+<div class = "model-viewer-container">
+    <model-viewer id="model" camera-controls touch-action="pan-z"  autoplay>
+    </model-viewer>
+</div> -->
+
+//create onscreen console canvas
+<canvas id="myCanvas" width="800" height="600"></canvas>
+<input type="text" id="consoleInput" />
+    <script>    
+
+//make focus slots for keys 1 thru 7
+
+for (let i = 1; i <= 7; i++) {
+    window.addEventListener('keydown', (e) => {
+        if (e.code === `Digit${i}`) {
+            slot[i - 1].focus = true;
+            console.log(`Slot ${i} focus:`, slot[i - 1].focus);
+        }
+    });
+
+    window.addEventListener('keyup', (e) => {
+        if (e.code === `Digit${i}`) {
+            slot[i - 1].focus = false;
+            console.log(`Slot ${i} focus:`, slot[i - 1].focus);
+        }
+    });
+}
+
+//dwell: Key W
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyW' ) {
+        dwell = !dwell
+       // console.log("%cyou can't stop change, but you can delay it", verdant)
+        textStates[currentIndex].setAction('save');
+        textStates[currentIndex].performAction();
+        textStates[currentIndex].setAction('load');
+        return dwell
+    }
+})
+
+//change: Key A
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyA' ) {
+          next()
+    }
+})
+
+
+//blend: Key S
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyS' ) {
+        randomBlend()
+        console.log("i am seeing things differently")
+    }
+})
+
+//random time: Key D
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyD' ) {
+        randTime()
+    }
+})
+
+
+//increment through images
+
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyT') {
+        if (slot[0].focus === true) {
+            loadImage(slot[0], imageA, 'increment')
+        }else if(slot[1].focus === true) {
+            loadImage(slot[1], imageB, 'increment')
+        }else if(slot[2].focus === true) {
+            loadImage(slot[2], imageC, 'increment')
+        }else if(slot[5].focus === true) {
+            //  loadModel('increment')
+        } else {
+        }
+    }
+})
+
+//decrement through images
+
+window.addEventListener('keydown', (e) => {
+        let key = e.code
+        if (key === 'KeyR') {
+            if (slot[0].focus === true) {
+                loadImage(slot[0], imageA, 'decrement')
+            }else if(slot[1].focus === true) {
+                loadImage(slot[1], imageB, 'decrement')
+            }else if(slot[2].focus === true) {
+                loadImage(slot[2], imageC, 'decrement')
+            }else if(slot[5].focus === true) {
+              //  loadModel('decrement')
+            } else {
+            }
+        }
+    })
+
+//decrement thru videos
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyQ') {
+            if (slot[0].focus === true) {
+                loadVideo(slot[0], videoA, 'decrement')
+                //reloadPatch()
+            }else if(slot[1].focus === true) {
+                loadVideo(slot[1], videoB, 'decrement')
+                //reloadPatch()
+            }else if(slot[2].focus === true) {
+                loadVideo(slot[2], videoC, 'decrement')
+                //reloadPatch()
+            }else if(slot[3].focus === true) {
+                loadAudio(slot[3], audioA, 'decrement')
+                slot[3].active = true
+            }else if(slot[4].focus === true) {
+                loadAudio(slot[4], audioB, 'decrement')
+                slot[4].active = true
+            } else {
+            }
+    }
+
+})
+
+
+
+
+
+
+//iterate through blend modes
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if(key ==='KeyE') {
+        if (e.shiftKey) {
+            if (slot[0].focus === true) {
+                slot[0].blendIndex = decrementVariable(slot[0].blendIndex, blendModes);
+                console.log(blendModes[slot[0].blendIndex]);
+                reloadPatch()
+            } else if(slot[1].focus === true) {
+                slot[1].blendIndex = decrementVariable(slot[1].blendIndex, blendModes);
+                console.log(slot[1].blendIndex);
+                reloadPatch()
+                console.log(blendModes[slot[1].blendIndex]);
+            } else if(slot[2].focus === true) {
+                slot[2].blendIndex = decrementVariable(slot[2].blendIndex, blendModes);
+                reloadPatch()
+                console.log(blendModes[slot[2].blendIndex]);
+            } else if(slot[2].focus === true) {
+                slot[3].blendIndex = decrementVariable(slot[3].blendIndex, blendModes);
+                reloadPatch()
+                console.log(blendModes[slot[3].blendIndex]);
+            } 
+
+        } else {
+            if (slot[0].focus === true) {
+                slot[0].blendIndex = incrementVariable(slot[0].blendIndex, blendModes);
+                console.log(blendModes[slot[0].blendIndex]);
+                reloadPatch()
+            } else if(slot[1].focus === true) {
+                slot[1].blendIndex = incrementVariable(slot[1].blendIndex, blendModes);
+                reloadPatch()
+                console.log(blendModes[slot[1].blendIndex]);
+            } else if(slot[2].focus === true) {
+                slot[2].blendIndex = incrementVariable(slot[2].blendIndex, blendModes);
+                reloadPatch()
+                console.log(blendModes[slot[2].blendIndex]);
+            } else if(slot[2].focus === true) {
+                slot[3].blendIndex = incrementVariable(slot[3].blendIndex, blendModes);
+                reloadPatch()
+                console.log(blendModes[slot[3].blendIndex]);
+            } 
+        }
+    }
+})
+
+
+
+// play & pause audio
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'Space' ) {
+        if (slot[0].focus === true) {
+            if(videoA.muted === true) {
+                videoA.muted = false
+            } else if (videoA.muted === false) {
+                videoA.muted = true
+            }
+        } else if (slot[1].focus === true) {
+            if(videoB.muted === true) {
+                videoB.muted = false
+            } else if (videoB.muted === false) {
+                videoB.muted = true
+            }
+        } else if (slot[2].focus === true) {
+            if(videoC.muted === true) {
+                videoC.muted = false
+            } else if (videoC.muted === false) {
+                videoC.muted = true
+            }
+        } else if (slot[3].focus === true && slot[3].active === false) {
+            audioA.play()
+            slot[3].active = true
+        } else if (slot[3].focus === true && slot[3].active === true) {
+            audioA.pause()
+            slot[3].active = false
+        } else if (slot[4].focus === true && slot[4].active === false) {
+            audioB.play()
+            slot[4].active = true
+        } else if (slot[4].focus === true && slot[4].active === true) {
+            audioB.pause()
+            slot[4].active = false
+        } else {
+        }
+    }
+})
+
+
+
+//random image element
+window.addEventListener('keydown', (e) => {
+    let key = e.code
+    if (key === 'KeyF' ) {
+        if (slot[0].focus === true) {
+                loadImage(slot[0], imageA, 'random')
+                //reloadPatch()
+            }else if(slot[1].focus === true) {
+                loadImage(slot[1], imageB, 'random')
+                //reloadPatch()
+            }else if(slot[2].focus === true) {
+                loadImage(slot[2], imageC, 'random')
+               // reloadPatch()
+            } else if(slot[5].focus === true) {
+            //    loadModel('random')
+                //reloadPatch()
+            } else {
+            }
+        }
+})  
+
+//increment thru videos
+// window.addEventListener('keydown', (e) => {
+//     let key = e.code
+//     if (key === 'KeyW') {
+//         if (slot[0].focus === true) {
+//             loadVideo(slot[0], videoA, 'increment')
+//         }else if(slot[1].focus === true) {
+//             loadVideo(slot[1], videoB, 'increment')
+//         }else if(slot[2].focus === true) {
+//             loadVideo(slot[2], videoC, 'increment')
+//         }else if(slot[3].focus === true) {
+//             loadAudio(slot[3], audioA, 'increment')
+//             slot[3].active = true
+//         }else if(slot[4].focus === true) {
+//             loadAudio(slot[4], audioB, 'increment')
+//             slot[4].active = true
+//         }else {
+//         } 
+//     }
+// })
+
+//mute video channel 
+
+// window.addEventListener('keydown', (e) => {
+//     let key = e.code
+//     if (key === 'KeyC') {
+//         if (slot[1].focus === true) {
+//             hideVideo(slot[1])
+//         } else if(slot[2].focus === true) { 
+//             hideVideo(slot[2])
+//         } else if(slot[5].focus === true) {
+//             toggleModelVisibility()
+//         }
+    
+//     }
+// })
+
+//random video or audio element
+// window.addEventListener('keydown', (e) => {
+//     let key = e.code
+//     if (key === 'KeyA' ) {
+//         if (slot[0].focus === true) {
+//                 loadVideo(slot[0], videoA, 'random')
+//                 //reloadPatch()
+//             }else if(slot[1].focus === true) {
+//                 loadVideo(slot[1], videoB, 'random')
+//                 //reloadPatch()
+//             }else if(slot[2].focus === true) {
+//                 loadVideo(slot[2], videoC, 'random')
+//                // reloadPatch()
+//             } else if(slot[3].focus === true) {
+//                 loadAudio(slot[3], audioA, 'random')
+//                 slot[3].active = true
+//             } else if(slot[4].focus === true) {
+//                 loadAudio(slot[4], audioB, 'random')
+//                 slot[4].active = true
+//             } else {
+//             }
+//         }
+// })  
+
+//iterate through speeds
+// window.addEventListener('keydown', (e) => {
+//     let key = e.code
+//     if (key === 'KeyD' ) {
+//         if (e.shiftKey) {
+//             for (let i = 0; i < 5; i++) {
+//                 if (slot[i].focus === true) {
+//                     slot[i].speedIndex = decrementVariable(slot[i].speedIndex, speed);
+//                     if(slot[i].speedIndex < 0){
+//                         slot[i].speedIndex = 0
+//                     }
+//                     slot[i].currentSpeed = speed[slot[i].speedIndex];
+//                     if(i === 0) {
+//                         s0.src.playbackRate = slot[0].currentSpeed
+//                     } else if(i ===1) {
+//                         s1.src.playbackRate = slot[1].currentSpeed
+//                     } else if(i === 2) {
+//                         s2.src.playbackRate = slot[2].currentSpeed
+//                     } else if(i === 3) {
+//                         audioA.playbackRate = slot[3].currentSpeed
+//                     } else if(i === 4) {
+//                         audioB.playbackRate = slot[4].currentSpeed
+                    
+//                     } else {
+//                     }
+//                     audioElements[slot[3].folderIndex].playbackRate = slot[3].currentSpeed
+//                     audioElements[slot[4].folderIndex].playbackRate = slot[4].currentSpeed
+//                     console.log(slot[i].currentSpeed);
+//                 }
+//             }
+//         } else {
+//             for (let i = 0; i < 5; i++) {
+//                 if (slot[i].focus === true) {
+//                     console.log(slot[3].folderIndex)
+//                     slot[i].speedIndex = incrementVariable(slot[i].speedIndex, speed);
+//                     slot[i].currentSpeed = speed[slot[i].speedIndex];
+//                     if(i === 0) {
+//                         s0.src.playbackRate = slot[0].currentSpeed
+//                     } else if(i ===1) {
+//                         s1.src.playbackRate = slot[1].currentSpeed
+//                     } else if(i === 2) {
+//                         s2.src.playbackRate = slot[2].currentSpeed
+//                     } else if(i === 3) {
+//                         audioA.playbackRate = slot[3].currentSpeed
+//                     } else if(i === 4) {
+//                         audioB.playbackRate = slot[4].currentSpeed
+//                     } else {
+//                     }
+//                     console.log(slot[i].currentSpeed);
+//                 }
+//             }
+//         }
+//     }
+// })
+
+
+// window.addEventListener('keydown', (e) => {
+//     let key = e.code
+//     if (key === 'KeyS' ) {
+//         slot[0].duration = s0.src.duration
+//         slot[1].duration  = s1.src.duration 
+//         slot[2].duration  = s2.src.duration
+//         slot[3].duration  = audioA.duration
+//         slot[4].duration  = audioB.duration
+        
+//         for (let i = 0; i < 5; i++) {
+//             if (slot[i].focus === true) {
+//                 slot[i].currentTime = Math.random() * (slot[i].duration - 0.5) + 0.5;
+//                 if(i ===0 ){
+//                 s0.src.currentTime = slot[0].currentTime
+//                 } else if(i === 1) {
+//                 s1.src.currentTime = slot[1].currentTime
+//                 } else if(i === 2) {
+//                 s2.src.currentTime = slot[2].currentTime
+//                 } else if(i === 3) {
+//                 audioA.currentTime = slot[3].currentTime
+//                 } else if(i === 4) {
+//                 audioB.currentTime = slot[4].currentTime    
+//                 } else {
+//                 }
+//             }
+//         }
+//     }
+// })
+
+ 
+
+</script>
+
+
+
+
+
+  <script src="simulation_1.js">
+</script>
+
+<!-- <div id="poem-container">
+    <div id="poem-display"></div>
+</div> -->
+
+
+
+
+
+
+
+</body>

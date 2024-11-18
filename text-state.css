@@ -1,0 +1,17 @@
+
+body {
+  background-color: white;
+  color: black;
+  font-family: "Comic Sans MS";
+
+}
+
+p {
+  text-align: justify;
+}
+
+.lectern {
+  font-size: 48px
+}
+
+

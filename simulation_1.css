@@ -1,0 +1,125 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+}
+
+/* .hydraCanvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    z-index:2;
+}
+
+#video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+} */
+
+.hydraCanvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 40px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+  
+  video, img {
+    max-height: 100vh;
+    max-width: 100vw;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  #video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  }
+
+.model-viewer-container {
+    height: 100%;
+    width: 100%;
+    visibility: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;    
+}
+
+model-viewer {
+    height: 100%; /* Make model-viewer fill its container */
+    width: 100%;
+    z-index: 0;    
+
+    
+}
+
+#model {
+    display:block;
+}
+
+
+.hidden-paragraphs p {
+    display: none;
+}
+
+/* The container should take up the full viewport */
+#poem-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* The text box itself */
+#poem-display {
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    color: #333;
+    font-family: "Comic Sans MS";
+    padding: 10px;
+}
+
+#consoleInput {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    z-index: 10;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+#myCanvas {
+    position: absolute;
+    z-index: 1;
+}
