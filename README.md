@@ -15,7 +15,7 @@
 
 While I initially developed Carrier Bag as a performance tool, the *FREE COMPUTER*  variant is designed for multichannel physical installation, with separate windows for text, visuals and browser console. It loads every paragraph element from a given HTML file into an array of objects, which store randomizing functions that affect the visual layer each time the text advances. If the text contains certain keywords, it will load media which contains those keywords. As functions fire in the software, the console logs fragments of poetry and shitposts as errors and warnings. 
 
-# Controls
+## Controls
 
 The installation can be controlled with four interactions:
 
@@ -29,7 +29,7 @@ The installation can be controlled with four interactions:
 
 On your computer, these keys are mapped to WASD respectively. If you investigate the event listeners in index.html, you can find some other vestigial controls for more direct interaction. 
 
-# How to run *FREE COMPUTER* at home using your own media:
+## How to run *FREE COMPUTER* at home using your own media:
 
 *This tutorial is geared toward people who may have never written a line of code, or run a script downloaded from GitHub. I am a novice myself. Feedback always welcome <3*
 
