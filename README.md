@@ -1,20 +1,17 @@
-# FREE COMPUTER readme
-
-FREE COMPUTER (Archive [#1](https://www.instagram.com/explore/tags/1/)) - 2024 - Custom computer, software, digital archive
-
-![IMG_1502.JPG](IMG_1502.jpg)
-
-*Every part of this computer, aside from the 12$ graphics card, was free. It is one transient home for over 5,000 media artifacts spanning 10 years of digital life. The furniture was found on the street. The rackmounted monitors were acquired through an eBay scam. The archive can sit comfortably in four inches of water. Its components are basically fungible. This is a first attempt to develop something like a digital vitrine// altar for this archive spanning two lives. Art, posts, gathered files, and field recordings surface and mix serendipitously, triggered by paragraphs from Dead Name. The browser console returns echoes from the future. A controller repurposed from Memory Terminal offers two choices: dwell and change. Witnessing leaves traces, and you can’t go back.*
-
 # FREE COMPUTER (Archive #1)
 
 **About**
+FREE COMPUTER (Archive 1) - 2024 - Custom computer, software, digital archive
+
+![IMG_1502.JPG](library/IMG_1502.jpg)
+
+*Every part of this computer, aside from the 12$ graphics card, was free. It is one transient home for over 5,000 media artifacts spanning 10 years of digital life. The furniture was found on the street. The rackmounted monitors were acquired through an eBay scam. The archive can sit comfortably in four inches of water. Its components are basically fungible. This is a first attempt to develop something like a digital vitrine// altar for this archive spanning two lives. Art, posts, gathered files, and field recordings surface and mix serendipitously, triggered by paragraphs from Dead Name. The browser console returns echoes from the future. A controller repurposed from Memory Terminal offers two choices: dwell and change. Witnessing leaves traces, and you can’t go back.*
 
 FREE COMPUTER  is a serendipitous archival media synthesizer based on Carrier Bag, a browser-based filesystem instrument I created during my residency in the 0xSalon at Trust. Carrier Bag uses [Hydra Video Synth](https://github.com/hydra-synth/hydra) to blend three layers of visual media together with two layers of audio, with controls for randomly or programmatically loading files, switching blend modes, and time stretching media. 
 
 While I initially developed Carrier Bag as a performance tool, the FREE COMPUTER  variant is designed for multichannel physical installation, with separate windows for text, visuals and browser console. It loads every paragraph element from a given HTML file into an array of objects, which store randomizing functions that affect the visual layer each time the text advances. If the text contains certain keywords, it will load media which contains those keywords. As functions fire in the software, the console logs fragments of poetry and shitposts as errors and warnings. 
 
-**Controls**
+# Controls
 
 The installation can be controlled with four interactions:
 
@@ -23,12 +20,12 @@ The installation can be controlled with four interactions:
 - Blend: change blend mode for a random file currently loaded in the visual layer
 - Random Time: if time based media is loaded, randomize current time of one file
     
-    ![IMG_1469.JPEG](IMG_1469.jpeg)
+    ![IMG_1469.JPEG](library/IMG_1469.jpeg)
     
 
 On your computer, these keys are mapped to WASD respectively. If you investigate the event listeners in index.html, you can find some other vestigial controls for more direct interaction. 
 
-**How to run FREE COMPUTER at home using your own media:**
+# How to run FREE COMPUTER at home using your own media:
 
 *This tutorial is geared toward people who may have never written a line of code, or run a script downloaded from GitHub. I am a novice myself. Feedback always welcome <3*
 
