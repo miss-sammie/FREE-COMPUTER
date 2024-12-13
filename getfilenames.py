@@ -4,7 +4,7 @@ import json
 # Define the project directory and the library directory
 project_directory = os.path.dirname(os.path.abspath(__file__))
 library_directory = os.path.join(project_directory, 'library')
-os.makedirs(library_directory, exist_ok=True)
+#os.makedirs(library_directory, exist_ok=True)
 
 # Define the folder to search within the library directory
 folder_to_search = input("Please enter the name of the folder you want to search within the 'library' directory: ")

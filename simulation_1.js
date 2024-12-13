@@ -29,7 +29,10 @@ const terminalStyle = 'font-family: Comic Sans MS; font-size: 14px'
 const bigConsole = 'font-family: Comic Sans MS; font-size: 2em;color:red;'
 const verdant = "font-family: Comic Sans MS; background-color: #182D09; color: #e4ecde; font-size: 2em"
 
-//define slots 
+//define html file for text window
+const textWindow = 'dead-name-all.html'
+
+//define media slots 
 let slot = [];
 
 for (let i = 1; i <= 6; i++) {
@@ -761,17 +764,18 @@ var vibes =["default","machinima","green","dense","diagram","water","text","ware
     }
   }
     
-  load_library('./library/library-folders.json')
-  load_library('./library/library-field collage.json');
-  load_library('./library/library-drone.json');
-  load_library('./library/library-noclip.json');
-  load_library('./library/library-posts.json')
-  load_library('./library/library-plastic.json')
-  load_library('./library/library-norns.json')
-  load_library('./library/library-offchain.json')
-  load_library('./library/library-avatar.json')
-  load_library('./library/library-text.json')
-  load_library('./library/library-portrait.json')
+  // load_library('./library/library-folders.json')
+  // load_library('./library/library-field collage.json');
+  // load_library('./library/library-drone.json');
+  // load_library('./library/library-noclip.json');
+  // load_library('./library/library-posts.json')
+  // load_library('./library/library-plastic.json')
+  // load_library('./library/library-norns.json')
+  // load_library('./library/library-offchain.json')
+  // load_library('./library/library-avatar.json')
+  // load_library('./library/library-text.json')
+  // load_library('./library/library-portrait.json')
+  load_library('./library/library-.json')
     
   
 //create Buffers
@@ -838,7 +842,7 @@ var vibes =["default","machinima","green","dense","diagram","water","text","ware
       })
       .catch(error => console.error('Error loading file:', error));
   }
-  loadParagraphsFromFile('dead-name-all.html').then(() => {initializeTextStates()});
+  loadParagraphsFromFile(textWindow).then(() => {initializeTextStates()});
 
 const loadRandomFunctions = [loadRandomImage, randomVideoSpeed, randomBlend, shitPost, randomBlend, loadRandomImage, morphIt, loadRandomVideo, randomBlend, randomVideoTime, randomAudioSpeed, loadRandomAudio, loadRandomVideo, randomBlend];
 
