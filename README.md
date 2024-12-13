@@ -1,9 +1,10 @@
 # FREE COMPUTER (Archive #1)
 
 **About**
+
 FREE COMPUTER (Archive 1) - 2024 - Custom computer, software, digital archive
 
-![IMG_1502.JPG](library/IMG_1502.jpg)
+![IMG_1502.JPG](library/IMG_1502.JPG)
 
 *Every part of this computer, aside from the 12$ graphics card, was free. It is one transient home for over 5,000 media artifacts spanning 10 years of digital life. The furniture was found on the street. The rackmounted monitors were acquired through an eBay scam. The archive can sit comfortably in four inches of water. Its components are basically fungible. This is a first attempt to develop something like a digital vitrine// altar for this archive spanning two lives. Art, posts, gathered files, and field recordings surface and mix serendipitously, triggered by paragraphs from Dead Name. The browser console returns echoes from the future. A controller repurposed from Memory Terminal offers two choices: dwell and change. Witnessing leaves traces, and you can’t go back.*
 
@@ -20,7 +21,7 @@ The installation can be controlled with four interactions:
 - Blend: change blend mode for a random file currently loaded in the visual layer
 - Random Time: if time based media is loaded, randomize current time of one file
     
-    ![IMG_1469.JPEG](library/IMG_1469.jpeg)
+    ![IMG_1469.JPEG](library/IMG_1469.JPEG)
     
 
 On your computer, these keys are mapped to WASD respectively. If you investigate the event listeners in index.html, you can find some other vestigial controls for more direct interaction. 
