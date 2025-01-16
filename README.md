@@ -51,8 +51,8 @@ On your computer, these keys are mapped to WASD respectively. If you investigate
     - images (jpg, png)
     - video (mov, mp4)
     - audio (mp3 and wav)
-6. Inside the main folder, double-click `start (macOS, Linux)` or `start.bat (Windows)` to launch Carrier Bag. Your default browser should open automagically. (*If not, please do so and navigate to* `http://localhost:8080`)
-7. This will open two windows, one black one white. Move each window to the desired screen. Clicking within either window will enter full screen mode. 
+6. Inside the *FREE COMPUTER* folder, find and double-click `start (macOS, Linux)` or `start.bat (Windows)` to launch Carrier Bag. Your default browser should open automagically. (*If not, please do so and navigate to* `http://localhost:8080`)
+7. This will open two windows, one black one white. If the white window is absent, check if your browser prevented popups from opening and allow them for this address. Move each window to the desired screen. Clicking within either window will enter full screen mode. 
 8. Press either the `A` key or the right arrow key to begin loading media files. 
 9. But what if you want your own text instead of mine! 
 10. First you need an HTML file. Really you just need a text file where every paragraph is surrounded by `<p>`[your paragraph] `</p>`. If your writing is in another format, there are also free html convertors online. Save your text as .html and drag it in to the *FREE COMPUTER* directory. 
