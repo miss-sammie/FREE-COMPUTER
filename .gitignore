@@ -1,0 +1,4 @@
+.DS_Store
+
+server/bottle.py
+library/library.json
