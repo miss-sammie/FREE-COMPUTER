@@ -40,7 +40,6 @@ On your computer, these keys are mapped to WASD respectively. If you investigate
         - Windows: `python --version`
         - Mac: `python --version` OR `python3 --version`
     - If the terminal gives you an error like ‘command not found,’ install Python. It is a little more annoying to do on Mac than PC, but I believe in you.
-- [Simple Web Server](https://simplewebserver.org/download.html)
 - Text editor ([VSCode](https://code.visualstudio.com/) or similar)
 
 ## Installation
@@ -48,20 +47,14 @@ On your computer, these keys are mapped to WASD respectively. If you investigate
 2. Once the file is downloaded, extract it. 
 3. Open VSCode and navigate to File→ Open Folder 
 4. Select *FREE COMPUTER* and open it. 
-5. In the home directory, you will find getfilenames.py. This is the script you will use to load file locations from your computer as a variable into *FREE COMPUTER*
-6. Before running getfilenames, copy whatever folders of media you wish to use into the Library folder. They can be loose files or folders, they don’t need to be in any particular structure, or conform to any filetype. Carrier Bag will load:
+5. Copy whatever folders of media you wish to use into the Library folder. They can be loose files or folders, they don’t need to be in any particular structure, or conform to any filetype. Carrier Bag will load:
     - images (jpg, png)
     - video (mov, mp4)
     - audio (mp3 and wav)
-        
-        
-7. Open the VSCode terminal and type then type `python getfilenames.py`
-8. It will prompt you to enter a file path. This can be useful if you want to create variables for specific folders, but for the purposes of this tutorial, just press `Enter`, then it will analyze every file and folder in your library directory. 
-9. Now you are ready to open *FREE COMPUTER*! Open Simple Web Server and create a new server. Select the location of your *FREE COMPUTER* folder as the folder path, then select “Create Server.” 
-10. Save changes and turn your server on. Select the Web Server URL, and your browser will open. If it opens to a list of URLs, select index.html.
-11. This will open two windows, one black one white. Move each window to the desired screen. Clicking within either window will enter full screen mode. 
-12. Press either the `A` key or the right arrow key to begin loading media files. 
-13. But what if you want your own text instead of mine! 
-14. First you need an HTML file. Really you just need a text file where every paragraph is surrounded by `<p>`[your paragraph] `</p>`. If your writing is in another format, there are also free html convertors online. Save your text as .html and drag it in to the *FREE COMPUTER* directory. 
-15. Open simulation1.js and at line 33, replace the filename of textWindow to “[your-filename].html”
-16. Make sure to save simulation1.js after you made your edit, then reload the windows.
+6. Inside the main folder, double-click `start (macOS, Linux)` or `start.bat (Windows)` to launch Carrier Bag. Your default browser should open automagically. (*If not, please do so and navigate to* `http://localhost:8080`)
+7. This will open two windows, one black one white. Move each window to the desired screen. Clicking within either window will enter full screen mode. 
+8. Press either the `A` key or the right arrow key to begin loading media files. 
+9. But what if you want your own text instead of mine! 
+10. First you need an HTML file. Really you just need a text file where every paragraph is surrounded by `<p>`[your paragraph] `</p>`. If your writing is in another format, there are also free html convertors online. Save your text as .html and drag it in to the *FREE COMPUTER* directory. 
+11. Open simulation1.js and at line 33, replace the filename of textWindow to “[your-filename].html”
+12. Make sure to save simulation1.js after you made your edit, then reload the windows.
