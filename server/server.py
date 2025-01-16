@@ -9,10 +9,11 @@ import socket
 ###########################################################################
 # CONFIGURATION ###########################################################
 ###########################################################################
-PORT = 8080                 # Which port to run the web server on
-EXPOSE_TO_LAN = False       # Make accessible over the local network
-AUTO_LAUNCH_BROWSER = True  # If True launches your default browser
-LIBRARY = Library()         # If no subfolder is passed it will scan all
+DEBUG = False                  # Set True for additional log messages
+PORT = 8080                    # Which port to run the web server on
+EXPOSE_TO_LAN = False          # Make accessible over the local network
+AUTO_LAUNCH_BROWSER = True     # If True launches your default browser
+LIBRARY = Library()            # If no subfolder is passed it will scan all
 ###########################################################################
 
 ###########################################################################
@@ -46,6 +47,9 @@ def file_not_found_route(error):
 def launch_browser():
     webbrowser.open_new(get_local_url())
 
+def get_host():
+    return '0.0.0.0' if EXPOSE_TO_LAN else 'localhost'
+
 def get_local_url():
     if EXPOSE_TO_LAN:
         ip = socket.gethostbyname(socket.gethostname())
@@ -62,5 +66,5 @@ if __name__ == "__main__":
     if AUTO_LAUNCH_BROWSER: launch_browser()
     print("Starting Carrier Bag on http://localhost:" + str(PORT))
     print("Press CTRL + C or close this Terminal window to abort")
-    run(host='0.0.0.0', port=PORT, quiet=True, debug=True)
+    run(host=get_host(), port=PORT, quiet=not DEBUG, debug=DEBUG)
 ###########################################################################
