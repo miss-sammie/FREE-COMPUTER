@@ -42,6 +42,7 @@ class Library:
         print(f'（。）（。）Taking a look inside the [{self.folder}] bag..')
         self.files = self.scan(self.folder_path, self.allowed_extensions)
         self.cache = json.dumps(self.files)
+        self.save_to_disk()
 
     def scan(self, folder, extensions):
         filenames = []
@@ -58,4 +59,8 @@ class Library:
 
     def as_json(self):
         return self.cache
+
+    def save_to_disk(self):
+        with open("library/library.json", 'w') as file:
+            json.dump(self.files, file, indent=4)
 ############################################################################
