@@ -1,0 +1,4 @@
+.DS_Store
+Thumbs.db
+library/library.json
+server/__pycache__/

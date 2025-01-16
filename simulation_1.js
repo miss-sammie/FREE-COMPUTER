@@ -775,7 +775,7 @@ var vibes =["default","machinima","green","dense","diagram","water","text","ware
   // load_library('./library/library-avatar.json')
   // load_library('./library/library-text.json')
   // load_library('./library/library-portrait.json')
-  load_library('./library/library-.json')
+  load_library('/library')
     
   
 //create Buffers
